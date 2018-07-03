@@ -14,6 +14,7 @@
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray* tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -21,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -41,6 +44,40 @@
 //            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
 //        }
 //    }];
+//    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray<Tweet *> *tweets, NSError *error) {
+//        if(tweets){
+//            NSLog(@"Success");
+//            for (Tweet * tweet in tweets)
+//            {
+//                NSString *text = tweet.text;
+//                NSLog(@"%@", text);
+//            }
+//            self.tweets = tweets;
+//            [self.tableView reloadData];
+//
+//
+//        }
+//        else {
+//            NSLog(@"Fail!");
+//        }
+//    }];
+    
+    [self fetchTweets];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
+    
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self.refreshControl endRefreshing];
+
+
+}
+
+-(void)fetchTweets
+{
+    
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray<Tweet *> *tweets, NSError *error) {
         if(tweets){
             NSLog(@"Success");
@@ -51,11 +88,16 @@
             }
             self.tweets = tweets;
             [self.tableView reloadData];
+            
+            [self.refreshControl endRefreshing];
+            
+            
         }
         else {
             NSLog(@"Fail!");
         }
     }];
+    
 
 }
 
