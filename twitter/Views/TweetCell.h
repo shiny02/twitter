@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetDate;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
 
-@property (weak, nonatomic) Tweet * tweet; 
+@property (weak, nonatomic) Tweet * tweet;
+
+
 @end

@@ -19,6 +19,14 @@
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
         self.followers = dictionary[@"followers_count"];
+        
+        self.profileBannerUrl = [NSURL URLWithString:dictionary[@"profile_banner_url"]];
+
+        self.profileImageUrl = [NSURL URLWithString:dictionary[@"profile_image_url"]];
+        
+        
+        
+        
     }
     return self; 
 }

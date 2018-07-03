@@ -27,13 +27,18 @@
     _tweet = tweet;
     
     self.userName.text = self.tweet.user.name;
-    self.userHandle.text =   self.tweet.user.screenName;
+    self.userHandle.text = [@"@" stringByAppendingString:self.tweet.user.screenName];
     self.tweetText.text = self.tweet.text;
     self.tweetDate.text = self.tweet.createdAtString;
     
-//    self.profileImage.image = nil;
-//    if (self.tweet.pictureURL != nil) {
-//        [self.posterView setImageWithURL:self.movie.posterUrl];
+    [self.userName sizeToFit];
+    [self.tweetText sizeToFit];
+    
+    
+    self.profileImage.image = nil;
+    if (self.tweet.user.profileImageUrl != nil) {
+        [self.profileImage setImageWithURL:self.tweet.user.profileImageUrl];
+    }
 }
 
 @end
