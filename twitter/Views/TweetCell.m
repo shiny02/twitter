@@ -115,6 +115,14 @@
     self.tweetText.text = self.tweet.text;
     self.tweetDate.text = self.tweet.createdAtString;
     
+    UIImage *likeImage = [UIImage imageNamed:@"favor-icon.png"];
+    [self.likeButton setImage:likeImage forState:UIControlStateNormal];
+    
+    
+    UIImage *RTImage = [UIImage imageNamed:@"retweet-icon.png"];
+    [self.retweetButton setImage:RTImage forState:UIControlStateNormal];
+    
+    
     if (self.tweet.favorited) {
         UIImage *likeImage = [UIImage imageNamed:@"favor-icon-red.png"];
         [self.likeButton setImage:likeImage forState:UIControlStateNormal];
@@ -122,7 +130,7 @@
     
     if (self.tweet.retweeted){
         UIImage *RTImage = [UIImage imageNamed:@"retweet-icon-green.png"];
-        [self.likeButton setImage:RTImage forState:UIControlStateNormal];
+        [self.retweetButton setImage:RTImage forState:UIControlStateNormal];
     }
     
     self.numOfLikes.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];

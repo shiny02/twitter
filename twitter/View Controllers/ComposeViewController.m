@@ -34,9 +34,10 @@
     
     NSString * tweetText = self.tweetTextView.text;
 [[APIManager shared] postStatusWithText:(NSString *)tweetText completion:^(Tweet *tweet, NSError *error)
- {
+  {
      if(tweet)
      {
+         [self.delegate didTweet:tweet];
          NSLog(@"Success, %@ :on system", tweet.text);
          [self dismissViewControllerAnimated:YES completion:nil];
      }

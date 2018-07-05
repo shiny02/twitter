@@ -230,6 +230,7 @@
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="N04-55-DD2"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="aPe-Ku-u1S">
                             <connections>
                                 <segue destination="hdr-GO-wpr" kind="presentation" id="GSy-I5-paH"/>
