@@ -8,10 +8,13 @@
 
 #import "ComposeViewController.h"
 #import "APIManager.h"
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeComposeTweet;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendTweet;
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
+@property (weak, nonatomic) IBOutlet UILabel *characterCount;
+
+- (void)textViewDidChange:(UITextView *)textView;
 
 @end
 
@@ -20,18 +23,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tweetTextView.layer.borderWidth = 5.0f;
+    self.tweetTextView.layer.borderColor = [[UIColor grayColor] CGColor];
+    
+   self.tweetTextView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 - (IBAction)onClose:(UIBarButtonItem *)sender{
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+
 - (IBAction)onPostTweet:(id)sender {
     
+    NSUInteger characterCount = [self.tweetTextView.text length];
+    if(characterCount > 140)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Tweet too long" message:@"The tweet exceeds the 140 character limit." preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Edit tweet" style:UIAlertActionStyleDefault handler:nil];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+    else{
     NSString * tweetText = self.tweetTextView.text;
 [[APIManager shared] postStatusWithText:(NSString *)tweetText completion:^(Tweet *tweet, NSError *error)
   {
@@ -47,13 +71,42 @@
      }
  
  
- }];
+    }];
+    }
     
-    
-
-
-
 }
+
+
+- (void)textViewDidChange:(UITextView *)textView{
+  
+    NSUInteger characterCount = [self.tweetTextView.text length];
+    
+    self.characterCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)characterCount];
+
+    if(characterCount > 140){
+        self.characterCount.textColor =  [UIColor colorWithRed:(255.0/255.0) green:(0/255.0) blue:(0/255.0) alpha:1];
+    }
+    else if(characterCount > 120){
+        self.characterCount.textColor =  [UIColor colorWithRed:(255.0/255.0) green:(204.0/255.0) blue:(0/255.0) alpha:1];
+    }
+    else{
+        self.characterCount.textColor =  [UIColor colorWithRed:(0/255.0) green:(204.0/255.0) blue:(0.0/255.0) alpha:1];
+    }
+    
+}
+
+//- (BOOL)textView:(UITextView *)tweetTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    // Set the max character limit
+//    int characterLimit = 140;
+//
+//    // Construct what the new text would be if we allowed the user's latest edit
+//    NSString *newText = [self.tweetTextView.text stringByReplacingCharactersInRange:range withString:text];
+//
+//    // TODO: Update Character Count Label
+//
+//    // The new text should be allowed? True/False
+//    return newText.length < characterLimit;
+//}
 
 
 

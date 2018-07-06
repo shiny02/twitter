@@ -61,7 +61,6 @@
     
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
-    [self.refreshControl endRefreshing];
 
 
 }
@@ -109,15 +108,6 @@
     
     cell.tweet = self.tweets[indexPath.row];
     
-    //cell.blurbLabel.text = movie[@"overview"];
-    
-    //NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    //NSString *posterURLString = movie[@"poster_path"];
-    
-    //NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    //NSURL * posterURL = [NSURL URLWithString:fullPosterURLString];
-    //cell.posterView.image = nil;
-    //[cell.posterView setImageWithURL:cell.movie.posterUrl];
     
     return cell;
     
