@@ -13,6 +13,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetDetailViewController.h"
 
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -143,9 +144,23 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    if([[segue identifier] isEqualToString:@"TweetDetailViewController"])
+    {
+    
+    TweetCell * tappedCell = sender;
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:tappedCell];
+    
+    Tweet * tweetToDetail = self.tweets[indexPath.row];
+    TweetDetailViewController * tweetDetailsViewController = [segue destinationViewController];
+    tweetDetailsViewController.tweet = tweetToDetail;
+    }
+    
+    else{
+    
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
     composeController.delegate = self;
+    }
 }
 
 

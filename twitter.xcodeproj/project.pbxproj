@@ -21,6 +21,7 @@
 		8564088120EB48EF00F723A1 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564088020EB48EF00F723A1 /* TweetCell.m */; };
 		85AD333920EAC9E0004F8F0E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AD333820EAC9E0004F8F0E /* User.m */; };
 		85AD333C20EACBCB004F8F0E /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AD333B20EACBCB004F8F0E /* Tweet.m */; };
+		85BDF09120EF23B10079FB7F /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BDF09020EF23B10079FB7F /* TweetDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		85AD333820EAC9E0004F8F0E /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		85AD333A20EACBCB004F8F0E /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Tweet.h; path = Models/Tweet.h; sourceTree = "<group>"; };
 		85AD333B20EACBCB004F8F0E /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Tweet.m; path = Models/Tweet.m; sourceTree = "<group>"; };
+		85BDF08F20EF23B10079FB7F /* TweetDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetDetailViewController.h; sourceTree = "<group>"; };
+		85BDF09020EF23B10079FB7F /* TweetDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
+				85BDF08F20EF23B10079FB7F /* TweetDetailViewController.h */,
+				85BDF09020EF23B10079FB7F /* TweetDetailViewController.m */,
 				854E7DC620EC1ABC00DA3353 /* ComposeViewController.h */,
 				854E7DC720EC1ABC00DA3353 /* ComposeViewController.m */,
 			);
@@ -283,6 +288,7 @@
 				85AD333C20EACBCB004F8F0E /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
+				85BDF09120EF23B10079FB7F /* TweetDetailViewController.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);

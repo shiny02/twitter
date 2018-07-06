@@ -114,7 +114,7 @@
     self.userName.text = self.tweet.user.name;
     self.userHandle.text = [@"@" stringByAppendingString:self.tweet.user.screenName];
     self.tweetText.text = self.tweet.text;
-    self.tweetDate.text = self.tweet.createdAtString;
+    self.tweetDate.text = self.tweet.timeSinceString;
     
     UIImage *likeImage = [UIImage imageNamed:@"favor-icon.png"];
     [self.likeButton setImage:likeImage forState:UIControlStateNormal];

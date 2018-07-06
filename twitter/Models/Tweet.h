@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL retweeted; // Configure retweet button
 @property (strong, nonatomic) User *user; // Contains name, screenname, etc. of tweet author
 @property (strong, nonatomic) NSString *createdAtString; // Display date
+@property (strong, nonatomic) NSString *timeSinceString;
 // For Retweets
 @property (strong, nonatomic) User *retweetedByUser;
 

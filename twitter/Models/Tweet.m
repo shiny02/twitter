@@ -44,12 +44,14 @@
         
         NSDate *date = [formatter dateFromString:originalDateString];
         NSString * ago = [date shortTimeAgoSinceNow];
-        self.createdAtString = ago;
-       // NSLog(@"%@", ago);
-        //formatter.dateStyle = NSDateFormatterShortStyle;
-//        formatter.timeStyle = NSDateFormatterNoStyle;
+        self.timeSinceString = ago;
         
-//        self.createdAtString = [formatter stringFromDate:date];
+        NSLog(@"%@", ago);
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        
+        self.createdAtString = [formatter stringFromDate:date];
+        NSLog(@"%@", self.createdAtString); 
     }
     
     return self;
