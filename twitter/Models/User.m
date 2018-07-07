@@ -23,7 +23,9 @@
         self.profileBannerUrl = [NSURL URLWithString:dictionary[@"profile_banner_url"]];
 
         self.profileImageUrl = [NSURL URLWithString:dictionary[@"profile_image_url"]];
-        
+        self.following = dictionary[@"friends_count"];
+        self.numOfTweets = dictionary[@"statuses_count"];
+        self.userSummary = dictionary[@"description"];
         
         
         

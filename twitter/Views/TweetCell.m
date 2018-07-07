@@ -79,8 +79,6 @@
         [sender setImage:btnImage forState:UIControlStateNormal];
     }
     else{
-        self.tweet.retweeted = NO;
-        self.tweet.retweetCount -= 1;
         
         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -92,7 +90,8 @@
         }];
         UIImage *btnImage = [UIImage imageNamed:@"retweet-icon.png"];
         [sender setImage:btnImage forState:UIControlStateNormal];
-        
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount -= 1;
     }
     
     [self refreshData];

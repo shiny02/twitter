@@ -33,6 +33,13 @@
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
         
+       // self.retweetedTweet = nil;
+//        if(self.retweeted)
+//        {
+//            Tweet * rTweet = [Tweet alloc];
+//            self.retweetedTweet = [rTweet  initWithDictionary:dictionary[@"retweeted_status"]];
+//        }
+        
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         
@@ -46,12 +53,10 @@
         NSString * ago = [date shortTimeAgoSinceNow];
         self.timeSinceString = ago;
         
-        NSLog(@"%@", ago);
         formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
         
         self.createdAtString = [formatter stringFromDate:date];
-        NSLog(@"%@", self.createdAtString); 
     }
     
     return self;

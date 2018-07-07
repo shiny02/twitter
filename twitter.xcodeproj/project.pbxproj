@@ -22,6 +22,7 @@
 		85AD333920EAC9E0004F8F0E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AD333820EAC9E0004F8F0E /* User.m */; };
 		85AD333C20EACBCB004F8F0E /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AD333B20EACBCB004F8F0E /* Tweet.m */; };
 		85BDF09120EF23B10079FB7F /* TweetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BDF09020EF23B10079FB7F /* TweetDetailViewController.m */; };
+		85BDF09420F018690079FB7F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85BDF09320F018690079FB7F /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		85AD333B20EACBCB004F8F0E /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Tweet.m; path = Models/Tweet.m; sourceTree = "<group>"; };
 		85BDF08F20EF23B10079FB7F /* TweetDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetDetailViewController.h; sourceTree = "<group>"; };
 		85BDF09020EF23B10079FB7F /* TweetDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetDetailViewController.m; sourceTree = "<group>"; };
+		85BDF09220F018690079FB7F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		85BDF09320F018690079FB7F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				85BDF09020EF23B10079FB7F /* TweetDetailViewController.m */,
 				854E7DC620EC1ABC00DA3353 /* ComposeViewController.h */,
 				854E7DC720EC1ABC00DA3353 /* ComposeViewController.m */,
+				85BDF09220F018690079FB7F /* ProfileViewController.h */,
+				85BDF09320F018690079FB7F /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				85BDF09120EF23B10079FB7F /* TweetDetailViewController.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				85BDF09420F018690079FB7F /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

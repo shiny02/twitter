@@ -11,7 +11,6 @@
 @interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeComposeTweet;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendTweet;
-@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCount;
 
 - (void)textViewDidChange:(UITextView *)textView;
@@ -26,7 +25,10 @@
     
     self.tweetTextView.layer.borderWidth = 5.0f;
     self.tweetTextView.layer.borderColor = [[UIColor grayColor] CGColor];
-    
+    if(self.previousUserHandle)
+    {
+        self.tweetTextView.text = self.previousUserHandle; 
+    }
    self.tweetTextView.delegate = self;
 }
 

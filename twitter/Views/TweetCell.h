@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *userHandle;
 //@property (strong, nonatomic) IBOutlet UILabel *tweetBody;
-@property (weak, nonatomic) IBOutlet UILabel *numOfReplies;
 @property (weak, nonatomic) IBOutlet UILabel *numOfRetweets;
 @property (weak, nonatomic) IBOutlet UILabel *numOfLikes;
 @property (weak, nonatomic) IBOutlet UILabel *tweetDate;

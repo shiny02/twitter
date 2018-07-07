@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TweetDetailViewController.h"
+#import "ProfileViewController.h"
 
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -154,7 +155,20 @@
     TweetDetailViewController * tweetDetailsViewController = [segue destinationViewController];
     tweetDetailsViewController.tweet = tweetToDetail;
     }
-    
+    else if([[segue identifier] isEqualToString:@"ProfileViewCSegue"])
+    {
+        TweetCell * tappedCell = sender;
+        NSIndexPath * indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet * tweetToDetail = self.tweets[indexPath.row];
+        
+        
+        UINavigationController *navigationController = [segue destinationViewController];
+        ProfileViewController *profileViewController = (ProfileViewController*)navigationController.topViewController;
+        
+
+        profileViewController.tweet = tweetToDetail;
+        profileViewController.user = tweetToDetail.user; 
+    }
     else{
     
     UINavigationController *navigationController = [segue destinationViewController];

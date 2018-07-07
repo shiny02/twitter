@@ -9,6 +9,8 @@
 #import "TweetDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "ProfileViewController.h"
+#import "TweetCell.h"
 
 @interface TweetDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -32,15 +34,28 @@
     self.handleLabel.text = [@"@" stringByAppendingString:self.tweet.user.screenName];
     self.tweetTextLabel.text = self.tweet.text;
     self.dateLabel.text = self.tweet.createdAtString;
+    if(self.tweet.favoriteCount == 1)
+    {
+            self.likesLabel.text = [[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] stringByAppendingString:@" Like"];
+    }
+    else{
     self.likesLabel.text = [[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] stringByAppendingString:@" Likes"];
-    
+    }
     
     self.profileImageView.image = nil;
     if (self.tweet.user.profileImageUrl != nil) {
         [self.profileImageView setImageWithURL:self.tweet.user.profileImageUrl];
     }
-    
-    
+    if(self.tweet.retweeted)
+    {
+    UIImage *btnImage = [UIImage imageNamed:@"retweet-icon-green.png"];
+    [self.retweetButton setImage:btnImage forState:UIControlStateNormal];
+    }
+    if(self.tweet.favorited)
+    {
+    UIImage *btnImage = [UIImage imageNamed:@"favor-icon-red.png"];
+    [self.likeButton setImage:btnImage forState:UIControlStateNormal];
+    }
     
     
 }
@@ -63,8 +78,6 @@
         [sender setImage:btnImage forState:UIControlStateNormal];
     }
     else{
-        self.tweet.retweeted = NO;
-        self.tweet.retweetCount -= 1;
         
         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -76,6 +89,8 @@
         }];
         UIImage *btnImage = [UIImage imageNamed:@"retweet-icon.png"];
         [sender setImage:btnImage forState:UIControlStateNormal];
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount -= 1;
         
     }
     
@@ -122,7 +137,13 @@
 }
 
 - (void) refreshData{
-    self.likesLabel.text = [[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] stringByAppendingString:@" Likes"];
+    if(self.tweet.favoriteCount == 1)
+    {
+        self.likesLabel.text = [[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] stringByAppendingString:@" Like"];
+    }
+    else{
+        self.likesLabel.text = [[NSString stringWithFormat:@"%d", self.tweet.favoriteCount] stringByAppendingString:@" Likes"];
+    }
 }
 
 
@@ -131,14 +152,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"ProfileViewCSegue"])
+    {
+
+        Tweet * tweetToDetail = self.tweet;
+        
+        
+        UINavigationController *navigationController = [segue destinationViewController];
+        ProfileViewController *profileViewController = (ProfileViewController*)navigationController.topViewController;
+        
+        profileViewController.tweet = tweetToDetail;
+        profileViewController.user = tweetToDetail.user;
+    }
+    
 }
-*/
+
 
 @end

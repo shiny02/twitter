@@ -15,7 +15,9 @@
 @property (strong, nonatomic) NSNumber *followers;
 @property (strong, nonatomic) NSURL * profileImageUrl;
 @property (strong, nonatomic) NSURL * profileBannerUrl;
-
+@property (strong, nonatomic) NSNumber * following;
+@property (strong, nonatomic) NSNumber * numOfTweets;
+@property (strong, nonatomic) NSString * userSummary;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary; 
 @end
